@@ -11,12 +11,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  top,
+  bottom,
 }: Readonly<{
+  top: React.ReactNode;
+  bottom: React.ReactNode;
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className} style={{ display: 'flex', flexDirection: 'column' }}>
+        {top}
+        <div className="flex-1">{children}</div>
+        {bottom}
+      </body>
     </html>
   );
 }
